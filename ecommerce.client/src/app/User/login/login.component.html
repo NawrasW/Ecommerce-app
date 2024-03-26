@@ -1,0 +1,40 @@
+<!-- login.component.html -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Login</h2>
+    </div>
+
+    <div class="row py-5">
+      <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch text-start justify-content-center ">
+        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" class="php-email-form">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" name="email" id="email" required ngModel>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" id="password" required ngModel>
+            </div>
+          </div>
+
+          <!-- Display red span if email or password is incorrect -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-dark m-2">Login</button>
+          </div>
+          <div *ngIf="loginForm.submitted && loginForm.controls['email'].invalid" class="text-danger">
+            Email is required.
+          </div>
+          <div *ngIf="loginForm.submitted && loginForm.controls['password'].invalid" class="text-danger">
+            Password is required.
+          </div>
+          <div *ngIf="loginForm.submitted && !loginForm.controls['email'].invalid && !loginForm.controls['password'].invalid" class="text-danger">
+            Email or password is incorrect.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

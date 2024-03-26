@@ -1,0 +1,65 @@
+<div class="row py-4">
+  <div class="col-md-2 col-sm-12">
+    <h3>Cart</h3>
+    <ul>
+      <li *ngFor="let item of cartItems">
+        {{ item.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-8 col-sm-12">
+    <h2>
+      {{ cartItems.length > 0 ? 'Your Cart' : 'Your Cart is Empty' }}
+    </h2>
+    <!-- Display cart items if not empty -->
+    <ng-container *ngIf="cartItems.length > 0">
+      <div class="container px-4 px-lg-5 mt-10">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+          <div class="col mb-5" *ngFor="let product of cartItems">
+            <div class="card h-100">
+              <img class="card-img-top" src="{{product.imageData}}" alt="{{ product.name }}" />
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <h5 class="fw-bolder">{{ product.name }}</h5>
+                  <div class="d-flex justify-content-center small text-warning mb-2">
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                  </div>
+                  <p class="text-center">{{ '$' + product.price }}</p>
+                  <div class="d-flex justify-content-between">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-outline-dark" (click)="decrementQuantity(product)">-</button>
+                      <span class="btn btn-outline-dark">{{ product.quantity }}</span>
+                      <button type="button" class="btn btn-outline-dark" (click)="incrementQuantity(product)">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <!--<button *ngIf="cartItems.length > 0" type="button" class="btn btn-dark" (click)="buyNow(cartItems[0])">Buy Now</button>-->
+          <button type="button" class="btn btn-outline-dark" (click)="onBuyNowClick()">Proceed to Checkout</button>
+          <button type="button" class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Empty cart template -->
+    <ng-container *ngIf="cartItems.length === 0">
+      <div class="container py-5">
+        <p>Your Cart is Empty</p>
+      </div>
+    </ng-container>
+
+    <!-- Empty cart template -->
+    <!--<ng-template #cartEmpty>
+    <p>Your Cart is Empty</p>
+  </ng-template>-->
+  </div>
+</div>

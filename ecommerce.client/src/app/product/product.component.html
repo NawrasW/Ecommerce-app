@@ -1,0 +1,50 @@
+<!-- product.component.html -->
+
+<div class="row py-3 px-5">
+  <div class="col-md-1 col-sm-12 d-flex flex-column align-items-center">
+    <h3>Categories</h3>
+    <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+      <li class="nav-item" *ngFor="let category of categories" [ngClass]="{'active': selectedCategory === category.categoryId}">
+        <button class="btn btn-outline-dark me-2 mb-2" (click)="filterItems(category.categoryId)">
+          <i class="bi {{ category.icon }} me-1" style="font-size: 3rem;"></i>
+          {{ category.name }}
+        </button>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="col-md-8 col-sm-12 custom-margin">
+    <h2>Featured Products</h2>
+    <div class="container px-4 px-lg-5 ">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+        <div class="col mb-5" *ngFor="let product of filteredItems">
+          <div class="card h-100 d-flex justify-content-center align-items-center">
+            <img class="card-img-top" style="min-width: 100px; max-width: 200px; width: 100%; height: 50%; " src="{{product.imageData}}" alt="{{ product.name }}" />
+            <div class="card-body p-4">
+              <!-- Inside the product card in product.component.html -->
+              <div class="text-center">
+                <h5 class="fw-bolder">{{ product.name }}</h5>
+                <div class="d-flex justify-content-center small text-warning mb-2">
+                  <div class="bi-star-fill"></div>
+                  <div class="bi-star-fill"></div>
+                  <div class="bi-star-fill"></div>
+                  <div class="bi-star-fill"></div>
+                  <div class="bi-star-fill"></div>
+                </div>
+                <p class="text-center ">{{ '$' + product.price }}</p>
+
+                <div class="text-center">
+                  <button *ngIf="!isInCart(product)" class="btn btn-outline-dark mt-auto" (click)="addToCart(product)">Add to cart</button>
+                  <button *ngIf="isInCart(product)" class="btn btn-outline-danger mt-auto" (click)="removeFromCart(product)">Remove from cart</button>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
