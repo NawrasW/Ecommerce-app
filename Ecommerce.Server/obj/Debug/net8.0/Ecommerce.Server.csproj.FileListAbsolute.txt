@@ -414,3 +414,4 @@ C:\Users\user\source\repos\Ecommerce\Ecommerce.Server\bin\Debug\net8.0\ru\Micros
 C:\Users\user\source\repos\Ecommerce\Ecommerce.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\user\source\repos\Ecommerce\Ecommerce.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\user\source\repos\Ecommerce\Ecommerce.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\user\source\repos\Ecommerce\Ecommerce.Server\obj\Debug\net8.0\Ecommerce.Server.sourcelink.json
